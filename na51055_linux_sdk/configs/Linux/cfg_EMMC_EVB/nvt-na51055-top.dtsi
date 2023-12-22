@@ -1,0 +1,23 @@
+&top {
+	sdio{pinmux = <0x1>;};
+	sdio2{pinmux = <0x1>;};
+	sdio3{pinmux = <0x2>;};
+	nand{pinmux = <0x0>;};
+	sensor{pinmux = <0x0>;};
+	sensor2{pinmux = <0x0>;};
+	mipi_lvds{pinmux = <0x0>;};
+	i2c{pinmux = <0x0>;};
+	sif{pinmux = <0x8>;};
+	uart{pinmux = <0x1>;};
+	spi{pinmux = <0x0>;};
+	sdp{pinmux = <0x0>;};
+	remote{pinmux = <0x0>;};
+	pwm{pinmux = <0x0>;};
+	pwm2{pinmux = <0x0>;};
+	ccnt{pinmux = <0x0>;};
+	audio{pinmux = <0x0>;};
+	lcd{pinmux = <0x10000000>;};
+	tv{pinmux = <0x0>;};
+	eth{pinmux = <0x12>;};
+	misc{pinmux = <0x0>;};
+};

@@ -1,0 +1,9 @@
+/BSP
+/code
+/tools
+/Makefile
+/logs
+/output
+/build/.nvt_default
+/build/.nvt_modelcfg
+/base

@@ -1,0 +1,12 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+/ {
+	audio@1 { type = "none";     i2s_ctrl = <0>; sif_channel = <0>; gpio_cold_reset = <0>; gpio_data = <0>; gpio_clk = <0>; gpio_cs = <0>; adc_zero = <0>; };
+	audio@2 { type = "embedded"; i2s_ctrl = <4>; sif_channel = <0>; gpio_cold_reset = <0>; gpio_data = <0>; gpio_clk = <0>; gpio_cs = <0>; adc_zero = <0>; };
+};
+

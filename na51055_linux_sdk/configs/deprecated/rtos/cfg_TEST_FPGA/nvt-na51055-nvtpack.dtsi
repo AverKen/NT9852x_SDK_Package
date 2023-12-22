@@ -1,0 +1,25 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+&nand {	
+	/** 
+	 * partition_name is $1 as in partition_$1 is referred 
+	 * to nvt-na51055-storage-partition. dtsi
+	 */
+	nvtpack {
+		ver = "NVTPACK_FW_INI_16072017"; /* Fixed */
+		method = <1>; /* Fixed */
+		index {
+			id0 { partition_name = "loader";      source_file = ""; }; /* Fixed */
+			id1 { partition_name = "fdt";         source_file = "nvt-na51055-evb.bin"; }; /* Fixed */
+			id2 { partition_name = "fdt.restore"; source_file = "";	}; /* Fixed */
+			id3 { partition_name = "uboot";	      source_file = "u-boot.bin"; };
+			id4 { partition_name = "uenv";	      source_file = ""; };
+			id5 { partition_name = "kernel";      source_file = "rtos-main.bin"; };
+		};
+	};
+};

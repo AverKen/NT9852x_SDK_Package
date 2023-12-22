@@ -1,0 +1,24 @@
+* nvt_memory_cfg
+
+Properties:
+
+- #address-cells : must be <1>
+
+- #size-cells : must be <1>
+
+- dram : dram starting address and size
+
+- core2entry1: must start at 0x00000000 for booting uboot. it is resued memory for linux.
+
+- fdt: fdt memory for communication between loader and uboot. it is resued memory for linux.
+
+- loader: loader starting address. it is resued memory for linux.
+
+- shmem: share memory for loader and uboot. it is resued memory for linux.
+
+- linuxtmp: u-boot's working buffer. it is resued memory for linux.
+
+- uboot: u-boot's starting address. it is resued memory for linux.
+
+- core2entry2: loader used to boot smp. it is resued memory for linux.
+

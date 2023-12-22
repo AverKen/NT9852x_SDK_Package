@@ -1,0 +1,186 @@
+Novatek IVOT Platforms Device Tree Bindings
+-------------------------------------------------
+* uart
+Properties:
+- compatible : Shall be "ns16550a", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- baud : baud rate.
+- reg-shift : Engine register shift, do not modify.
+- reg-io-width : Engine io width, do not modify.
+- no-loopback-test : Loopback test enable.
+- clock-frequency : Source clock frequency.
+- fifo-size : Engine capability, do not modify.
+- fifo-trig-level : Trigger level, from 0 ~ 3.
+- hw_flowctrl : Hardware flow control enable.
+- uart_id : Hardware ID.
+
+* mmc
+Properties:
+- compatible : Shall be "nvt,nvt_mmc" or "nvt,nvt_mmc2" or "nvt,nvt_mmc3", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- max-frequency : Maximum supported frequency.
+- voltage-switch : Voltage switch enable.
+- max-voltage : Maximum supported voltage.
+- bus-width : Bus width.
+- neg-sample-edge : Data sampling edge. 0: Positive, 1: Negative.
+- driving : Pad driving value for each mode (DS/HS/SDR50/SDR104), unit is mA.
+- cd_gpio : Card detect gpio, gpio pin and value while card inserted.
+- card_power_gpio: Card power gpio, gpio pin and value while power on.
+- ro_gpio : Write Protected gpio, gpio pin and value while write protected on.
+- power_en : Power switch gpio, gpio pin and value while card inserted, used for debounce.
+
+* nand
+Properties:
+- compatible : Shall be "nvt,nvt_spinand", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- clock-frequency : Clock frequency.
+
+* nor
+Properties:
+- compatible : Shall be "nvt,nvt_spinor", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- clock-frequency : Clock frequency.
+- trace-stdtable : Use standard table for supporting most nor flash.
+
+* gpio
+Properties:
+- compatible : Shall be "nvt,nvt_gpio", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- #gpio-cell : Common GPIO interface, do not modify.
+
+* eth
+Properties:
+- compatible : Shall be "nvt,synopsys_eth", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- sp-clk : Special clock enable.
+
+* wdt
+Properties:
+- compatible : Shall be "nvt,nvt_wdt", do not modify.
+- reg : Engine base address, do not modify.
+
+* pwm
+Properties:
+- compatible : Shall be "nvt,nvt_pwm", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* adc
+Properties:
+- compatible : Shall be "nvt,nvt_adc", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- #io-channel-cells : Common IIO interface, do not modify.
+
+* rtc
+Properties:
+- compatible : Shall be "nvt,nvt_rtc", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* drtc
+Properties:
+- compatible : Shall be "nvt,nvt_drtc", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* top
+Properties:
+- compatible : Shall be "nvt,nvt_top", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* spi
+Properties:
+- compatible : Shall be "nvt,nvt_spi", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+- dma-support : DMA support enable.
+- nvt-devname : SPI device name id.
+
+* hdmitx
+Properties:
+- compatible : Shall be "nvt,nvt_hdmitx", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* lvds
+Properties:
+- compatible : Shall be "nvt,nvt_lvds", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* senphy
+Properties:
+- compatible : Shall be "nvt,nvt_senphy", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* vx1
+Properties:
+- compatible : Shall be "nvt,nvt_vx1", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* ssenif
+Properties:
+- compatible : Shall be "nvt,nvt_ssenif", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* nvt_usb3host
+Properties:
+- compatible : Shall be "nvt,nvt_usb3xhci", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* nvt_usb3dev
+Properties:
+- compatible : Shall be "nvt,nvt_dwc3_dev", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* nvt_usb2host
+Properties:
+- compatible : Shall be "nvt,ehci-nvtivot", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* nvt_usb2dev
+Properties:
+- compatible : Shall be "nvt,fotg200_udc", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+* nvt_usb_chrg
+Properties:
+- compatible : Shall be "nvt,nvt_usb_chrgdet", do not modify.
+- reg : Engine base address, do not modify.
+- interrupts : IRQ number, do not modify.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

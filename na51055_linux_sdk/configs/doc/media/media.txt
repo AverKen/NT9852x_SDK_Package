@@ -1,0 +1,5 @@
+Novatek IVOT Platforms Device Tree Bindings
+---------------------------------------------------------------------------------
+
+Properties:
+- compatible : The compatible name are kflow internal used , user should not change it.

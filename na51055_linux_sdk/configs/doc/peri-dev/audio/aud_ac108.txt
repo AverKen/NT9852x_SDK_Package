@@ -1,0 +1,12 @@
+&i2c2 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	aud_ac108@0 {
+		compatible = "nvt,aud_ac108";
+		reg = <0x3B>;
+		I2C {
+			i2c_id = <2>;                   /* AUD_I2C_ID_3 */
+			i2c_addr = <0x3B>;
+		};
+	};
+};

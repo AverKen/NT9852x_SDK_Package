@@ -1,0 +1,91 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+/ {
+	/* Uboot/loader memory layout */
+	/* !!! for rtos booting linux !!!
+	 * 1. fdt, rtos and bridge memory region must be contiguous.
+	 * 2. fdt, rtos and bridge memory region cannot overlap with hdal and linux memory
+	 * 3. fdt, rtos and bridge memory region cannot overlap with linuxtmp
+	 * 4. fdt, rtos and bridge memory have to start at 8MB alignment, and the size also needs 8MB alignment
+	 * 5. uboot memory cannot be overlapped with linux system memory region
+	 * 6. for this sample, (fdt+rtos+bridge) located at 24MB(0x02800000), because loader @16MB, loader's tmp(SDRAM_Start_FW) @32MB
+	 */
+	nvt_memory_cfg {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		dram {    reg = <0x00000000 0x20000000>; };
+		shmem{    reg = <0x00007E00 0x00000200>; }; /* recycled after rtos started */
+		loader {  reg = <0x01000000 0x00800000>; }; /* recycled after uboot started */
+		fdt {     reg = <0x01800000 0x00040000>; }; /* recycled after linux started */
+		rtos {    reg = <0x01840000 0x00780000>; }; /* recycled after linux started */
+		bridge {  reg = <0x01FC0000 0x00040000>;  }; /* recycled after linux started */
+		linuxtmp{ reg = <0x02000000 0x1C000000>; }; /* recycled after rtos started */
+		uboot{    reg = <0x1E000000 0x02000000>; }; /* recycled after rtos started */
+	};
+
+	/* Linux system memory region, !! cannot overlap with rtos !! */
+	memory { device_type = "memory"; reg = <0x00000000 0x01800000 0x02000000 0x10800000>; };
+
+	/* Linux setup reserved memory */
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		cma0: cma0@0x05000000 {
+			compatible = "shared-dma-pool";
+			reusable;
+			reg = <0x05000000 0x03000000>;
+			alignment = <0x400000>;
+			status = "okay";
+		};
+	};
+
+	nvt_cma {
+		compatible = "nvt,nvt_cma";
+		memory-region = <&cma0>;
+		id = <0>;
+	};
+
+	/*
+	 * rtos libc heap expected minimum size
+	 * becasue remain of rtos memory will be the libc heap automatically,
+	 * if it too small against your expectation, there will be a assert on boot.
+	 */
+	libc-heap { size = <0x00300000>; };
+
+	hdal-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		media { reg = <0x12800000 0x0D800000>; };
+	};
+
+	hdal-maxpath-cfg {
+		/* First is for VCAP0, second for VCAP1 and so on.*/
+		vdocap_active_list   = <1 1 0 0 0 0 0 0>;
+		vdoprc_maxdevice   = <2>;
+		vdoenc_maxpath   = <8>;
+		vdodec_maxpath   = <2>;
+		vdoout_maxdevice   = <1>;
+		adocap_maxdevice   = <1>;
+		adoout_maxdevice   = <1>;
+		adoenc_maxpath   = <1>;
+		adodec_maxpath   = <1>;
+		/* gfx jog list */
+		gfx_maxjob       = <2>;
+		/* stamp max img buffer number */
+		stamp_maximg     = <16>;
+		/* First is internal stamp number, second is external stamp number */
+		vdoprc_maxstamp  = <4  16>;
+		/* First is internal mask number, second is external mask number */
+		vdoprc_maxmask   = <8  64>;
+		vdoenc_maxstamp  = <32 16>;
+		vdoenc_maxmask   = <0  64>;
+		vdoout_maxstamp  = <0  16>;
+		vdoout_maxmask   = <0  64>;
+	};
+};

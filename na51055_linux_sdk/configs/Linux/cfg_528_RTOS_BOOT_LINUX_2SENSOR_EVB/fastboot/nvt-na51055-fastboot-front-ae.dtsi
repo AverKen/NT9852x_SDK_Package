@@ -1,0 +1,23 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+&fastboot {
+    front_ae_0 {
+        enable {
+			      size = [04 00 00 00];
+			      data = [00 00 00 00];
+		        };
+        sen_expt_min {
+			      size = [04 00 00 00];
+			      data = [32 00 00 00];
+		        };
+        sen_expt_max {
+			      size = [04 00 00 00];
+			      data = [35 82 00 00];
+		        };
+		};
+};

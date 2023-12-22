@@ -1,0 +1,21 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+&nand {
+	partition_loader {      label = "loader";       reg = <0x0 0x00000   0x0 0x40000>; }; /* Fixed */
+	partition_fdt {	        label = "fdt";	        reg = <0x0 0x40000   0x0 0x40000>; }; /* Fixed */
+	partition_fdt.restore {	label = "fdt.restore";	reg = <0x0 0x80000   0x0 0x40000>; }; /* Fixed */
+	partition_uboot {       label = "uboot";        reg = <0x0 0xC0000   0x0 0xA0000>; };
+	partition_uenv {        label = "uenv";         reg = <0x0 0x160000  0x0 0x20000>; };
+	partition_kernel {      label = "kernel";       reg = <0x0 0x180000  0x0 0x660000>; };
+	partition_rootfs {      label = "rootfs";       reg = <0x0 0x7E0000  0x0 0x2E0000>; };
+	partition_rootfs1 {     label = "rootfs1";      reg = <0x0 0xAC0000  0x0 0x1000000>; };
+	partition_app {         label = "app";          reg = <0x0 0x1AC0000 0x0 0x1000000>; }; /* app size depneds on hdal/samples/vendor_cfg/Makeile: ROOTFS_UBI_MAX_LEB_COUNT */
+	partition_fdt.app {     label = "fdt.app";      reg = <0x0 0x2AC0000 0x0 0x80000>;  };
+	partition_rtos {        label = "rtos";         reg = <0x0 0x2B40000 0x0 0xA00000>; };
+	partition_all {         label = "all";          reg = <0x0 0x0000000 0x0 0x8000000>; };
+};

@@ -1,0 +1,55 @@
+Novatek IVOT Platforms Device Tree Bindings
+-------------------------------------------------
+!!!!!Do not edit this dtsi file!!!!!
+
+* CPU
+
+Properties:
+
+- compatible : Should at least contain "cortex-a9".
+
+- clock-frequency : To delcare the cpu frequency. This value should be synchronized with loader info.
+
+- cpu-release-addr : SMP will use this address to release the pen
+
+- next-level-cache : Assign to PL310 L2 outer cache phandle pointer
+
+* Timer
+
+We used the cpu core timer and peripheral timer clock info as the following compatible definitions.
+
+Properties:
+
+- compatible : Should at least contain "periph_clk". It will be used as cpu timer
+
+- compatible : Should at least contain "core_clk".
+
+* gic
+
+Properties:
+
+- compatible : Should at least contain "cortex-a7-gic".
+
+- reg : GIC register info
+
+- interrupts : Maintenence IRQ
+
+* pmu
+
+Properties:
+
+- compatible : Should at least contain "cortex-a9-pmu". HW PMU to monitor the system performance.
+
+- interrupt-affinity : CPU core affinity number.
+
+- interrupts : Fill the SPI IRQ number
+
+* Cache
+
+ARM CA9 had an outer cache controller which is named PL310, the following will config related parameters.
+
+- compatible : Should at least contain "pl310-cache".
+
+- arm,data-latency: The L2 cache data latency config
+
+- arm,tag-latency: The L2 cache tag latency config

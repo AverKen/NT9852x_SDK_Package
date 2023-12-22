@@ -1,0 +1,16 @@
+* nvtpack
+
+Properties:
+
+- ver : fixed, all-in-one bin version.
+
+- method : fixed, always be <1>
+
+- index : 
+  id0 - idn: must be arranged in ascending order
+  partition_name: the name is referred to storage-partition.dtsi
+  source_file: the location where the source bin is.
+  
+* &nand / &emmc / &nor for flash type
+
+

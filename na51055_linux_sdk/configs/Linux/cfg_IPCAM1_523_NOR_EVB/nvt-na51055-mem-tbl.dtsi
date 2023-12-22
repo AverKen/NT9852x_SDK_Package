@@ -1,0 +1,75 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+/ {
+	/* Uboot/loader memory layout */
+	nvt_memory_cfg {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		dram {          reg = <0x00000000 0x08000000>;  };
+		core2entry1 {   reg = <0x00000000 0x00100000>;  };
+		fdt {           reg = <0x00100000 0x00100000>;  };              /* recycled after linux started */
+		shmem {         reg = <0x00200000 0x00100000>;  };              /* recycled after linux started */
+		loader {        reg = <0x01000000 0x00100000>;  };              /* recycled after linux started */
+		linuxtmp {      reg = <0x01100000 0x04F00000>;  };              /* recycled after linux started */
+		uboot {         reg = <0x06000000 0x01FC0000>;  };              /* recycled after linux started */
+		core2entry2 {   reg = <0x07FC0000 0x00040000>;  };
+	};
+	/* Linux system memory region*/
+	memory { device_type = "memory"; reg = <0x00000000 0x04000000>; };
+
+	/* Linux setup reserved memory */
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
+
+		cma0: cma0@0x03000000 {
+			compatible = "shared-dma-pool";
+			reusable;
+			reg = <0x03000000 0x00400000>;
+			alignment = <0x400000>;
+			status = "okay";
+		};
+	};
+
+	nvt_cma {
+		compatible = "nvt,nvt_cma";
+		memory-region = <&cma0>;
+		id = <0>;
+	};
+
+	hdal-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		media { reg = <0x04000000 0x04000000 0x40000000 0x20000000>; };
+	};
+
+	hdal-maxpath-cfg {
+		/* First is for VCAP0, second for VCAP1 and so on.*/
+		vdocap_active_list   = <1 1 1 0 0 0 0 0>;
+		vdoprc_maxdevice   = <2>;
+		vdoenc_maxpath   = <8>;
+		vdodec_maxpath   = <2>;
+		vdoout_maxdevice   = <1>;
+		adocap_maxdevice   = <1>;
+		adoout_maxdevice   = <1>;
+		adoenc_maxpath   = <1>;
+		adodec_maxpath   = <1>;
+		/* gfx jog list */
+		gfx_maxjob       = <2>;
+		/* stamp max img buffer number */
+		stamp_maximg     = <16>;
+		/* First is internal stamp number, second is external stamp number */
+		vdoprc_maxstamp  = <4  16>;
+		/* First is internal mask number, second is external mask number */
+		vdoprc_maxmask   = <8  64>;
+		vdoenc_maxstamp  = <32 16>;
+		vdoenc_maxmask   = <0  64>;
+		vdoout_maxstamp  = <0  16>;
+		vdoout_maxmask   = <0  64>;
+	};
+};

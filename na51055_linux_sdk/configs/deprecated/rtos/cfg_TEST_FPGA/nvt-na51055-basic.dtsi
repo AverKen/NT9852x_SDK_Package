@@ -1,0 +1,68 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	model = "Novatek NA51055";
+	compatible = "novatek,na51055", "nvt,ca9";
+	interrupt-parent = <&gic>;
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu0: cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a9";
+			reg = <0x0>;
+			next-level-cache = <&L2>;
+			clock-frequency = <24000000>;
+		};
+	};
+
+	/* binding to clk framework driver */
+	periph_clk: periph_clk {
+		compatible = "nvt,periph_clk";
+		#clock-cells = <0>;
+		clock-output-names = "periph_clk";
+	};
+
+	global_timer@ffd00200 {
+		compatible = "arm,cortex-a9-global-timer";
+		reg = <0xffd00200 0x20>;
+		interrupts = <GIC_PPI 11 0xf01>;
+		clocks = <&periph_clk>;
+	};
+
+	pmu {
+		compatible = "arm,cortex-a9-pmu";
+		interrupts = <GIC_SPI 212 4>;
+		interrupt-affinity = <&cpu0>;
+	};
+
+	L2: cache-controller@ffe00000 {
+		compatible = "arm,pl310-cache";
+		reg = <0xffe00000 0x1000>;
+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+		cache-unified;
+		cache-level = <2>;
+		arm,data-latency = <6 6 6>;
+		arm,tag-latency = <6 6 6>;
+	};
+
+	gic: interrupt-controller@0xf1500000 {
+		compatible = "arm,cortex-a9-gic";
+		#interrupt-cells = <3>;
+		interrupt-controller;
+		reg =	<0xffd01000 0x1000>,	/* GIC Dist */
+			<0xffd00100 0x1000>;	/* GIC CPU */
+	};
+};

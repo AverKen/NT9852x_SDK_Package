@@ -1,0 +1,29 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+/ {
+	/* Uboot/loader memory layout */
+	nvt_memory_cfg {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		dram {	        reg = <0x00000000 0x20000000>;	};
+		fdt {           reg = <0x00000100 0x00100000>;	};
+		loader {        reg = <0x00200000 0x00800000>;	}; /* recycled after uboot started */
+		shmem{	        reg = <0x00A00000 0x00100000>;	}; /* recycled after rtos started */
+		linuxtmp{	reg = <0x00B00000 0x1D500000>;	}; /* recycled after rtos started */
+		uboot{	        reg = <0x1E000000 0x02000000>;	}; /* recycled after rtos started */
+		rtos        {   reg = <0x00B00000 0x11D00000>;  }; /* cannot overlap with hdal-memory */
+	};
+
+	/* Linux system memory region*/
+	memory { device_type = "memory"; reg = <0x00000000 0x12800000>; };
+
+	hdal-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		media { reg = <0x12800000 0x0D800000>; };
+	};
+};

@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "of_platform.h": "c",
+        "of_device.h": "c",
+        "hardware.h": "c",
+        "memblock.h": "c",
+        "autoconf.h": "c",
+        "string.h": "c",
+        "pm.h": "c",
+        "nvtversion.h": "c"
+    }
+}

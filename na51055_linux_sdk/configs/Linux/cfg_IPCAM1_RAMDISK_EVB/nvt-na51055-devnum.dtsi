@@ -1,0 +1,27 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+
+/ {
+	hd_devnum {
+		/* 
+		  major number must be RESERVED refers to  
+		  https://www.kernel.org/doc/Documentation/admin-guide/devices.txt
+		*/
+		major = <255>;
+		minor {
+			/* format:  module_name = <minor1 minor2 minor3 .....> */
+			/* the number of mnior1 minor2 ... must be in order */
+			nvt_pwm = <1>;
+			nvt_timer_module = <2>;
+			nvt_ddr_arb = <3>;
+			nvt_graphic = <4 5>;
+			isf_flow = <6 7 8 9 10 11 12 13>;
+			nvt_ide = <14 15>;
+		};
+	};
+};

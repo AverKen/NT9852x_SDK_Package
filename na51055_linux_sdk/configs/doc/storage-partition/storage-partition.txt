@@ -1,0 +1,9 @@
+* &nand / &emmc / &nor for flash type
+
+Properties:
+
+- partition_??? : partition name
+  lable - must be the same with your partition name
+  reg: 64-bit partition offset and partition size
+  
+

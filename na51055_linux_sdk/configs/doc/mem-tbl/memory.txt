@@ -1,0 +1,66 @@
+* memory
+
+Linux system (Linux OS) memory.
+
+Properties:
+
+- reg : Linux system memory region: address(hex) size(hex)
+
+
+* reserved-memory
+
+To declare the memory reserved area in Linux system memory.
+
+Properties:
+
+- cma0:
+	* compatible: shared-dma-pool (fixed), dma allocate api will use this buffer.
+	* reg: to declare the cma area with address and size
+	* alignment: 0x400000 (fixed)
+
+
+- dsp_cma0:
+	* compatible: shared-dma-pool (fixed), dsp0 will use this area.
+	* reg: to declare the cma area with address and size
+	* alignment: 0x400000 (fixed)
+
+- dsp_cma1:
+	* compatible: shared-dma-pool (fixed), dsp1 will use this area.
+	* reg: to declare the cma area with address and size
+	* alignment: 0x400000 (fixed)
+
+* hdal-memory
+
+Hdal memory, also named as media memory zone(MMZ) memory.
+
+Properties:
+
+- media:
+	* reg: The MMZ memory range address(hex) size(hex), it contains four values as follows:
+		   DDR1 address(hex), DDR1 size(hex), DDR2 address(hex), DDR2 size(hex).
+		   If the HW layout does not have DDR2, user can just assign two values: DDR1 address and DDR1 size.
+
+* hdal-maxpath-cfg
+
+The configuration of all hdal components supported maximum device or path number,
+user can not open devices or paths over this configurations.
+
+Properties:
+
+- vdocap_active_list: The video capture devices enable list, the first is VCAP0, second for VCAP1 and so on.
+- vdoprc_maxdevice: The video process maximum device number.
+- vdoenc_maxpath: The video encoder maximum path number.
+- vdodec_maxpath: The video decoder maximum path number.
+- vdoout_maxdevice: The video output maximum device number.
+- adocap_maxdevice: The audio capture maximum device number.
+- adoout_maxdevice: The audio output maximum device number.
+- adoenc_maxpath: The audio encoder maximum path number.
+- adodec_maxpath: The audio decoder maximum path number.
+- gfx_maxjob: The gfx maximum job number.
+- stamp_maximg: The stamp maximum image buffer number.
+- vdoprc_maxstamp: The video process maximum stamp number, the first is internal stamp number, second is external stamp number.
+- vdoprc_maxmask: The video process maximum mask number, the first is internal mask number, second is external mask number.
+- vdoenc_maxstamp: The video encoder maximum stamp number, the first is internal stamp number, second is external stamp number.
+- vdoenc_maxmask: The video encoder maximum mask number, the first is internal mask number, second is external mask number.
+- vdoout_maxstamp: The video output maximum stamp number, the first is internal stamp number, second is external stamp number.
+- vdoout_maxmask: The video output maximum mask number, the first is internal mask number, second is external mask number.

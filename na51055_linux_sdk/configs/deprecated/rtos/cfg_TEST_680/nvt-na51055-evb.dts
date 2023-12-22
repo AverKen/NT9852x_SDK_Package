@@ -1,0 +1,20 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+/dts-v1/;
+#include <dt-bindings/gpio/nvt-gpio.h>
+#include "nvt-na51055-peri.dtsi"    /* engine register definition */
+#include "nvt-na51055-top.dtsi"     /* pinmux, made from tool */
+#include "nvt-na51055-i2c.dtsi"     /* i2c */
+#include "nvt-na51055-gpio.dtsi"    /* gpio, made from tool */
+#include "nvt-na51055-audio.dtsi"   /* peripheral: audio */
+#include "nvt-na51055-display.dtsi" /* peripheral: display */
+#include "nvt-na51055-media.dtsi"   /* ko files relation */
+#include "nvt-na51055-mem-tbl.dtsi" /* memory partition */
+#include "nvt-na51055-storage-partition.dtsi" /* flash partition */
+#include "nvt-na51055-info.dtsi"    /* used for turnkey information */
+#include "nvt-na51055-nvtpack.dtsi" /* used for turnkey to make all-in-one bin */

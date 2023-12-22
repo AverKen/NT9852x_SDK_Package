@@ -1,0 +1,33 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+/ {
+	fastboot:fastboot {
+		enable = <1>;
+	};
+};
+
+#include "nvt-na51055-fastboot-hdal-mem.dtsi"
+#include "nvt-na51055-fastboot-ipp.dtsi"
+#include "nvt-na51055-fastboot-ae-imx290.dtsi"
+#include "nvt-na51055-fastboot-awb-imx290.dtsi"
+#include "nvt-na51055-fastboot-iq-imx290.dtsi"
+#include "nvt-na51055-fastboot-iq-imx290_dpc.dtsi"
+#include "nvt-na51055-fastboot-iq-imx290_shading.dtsi"
+#include "nvt-na51055-fastboot-iq-imx290_ldc.dtsi"
+#include "nvt-na51055-fastboot-ae-imx290_hdr.dtsi"
+#include "nvt-na51055-fastboot-awb-imx290_hdr.dtsi"
+#include "nvt-na51055-fastboot-iq-imx290_hdr.dtsi"
+#include "nvt-na51055-fastboot-sie.dtsi"
+#include "nvt-na51055-fastboot-venc.dtsi"
+#include "nvt-na51055-fastboot-ae-adc.dtsi"
+#include "nvt-na51055-fastboot-acap.dtsi"
+#include "nvt-na51055-fastboot-front-ae.dtsi"
+#include "nvt-na51055-fastboot-front-awb.dtsi"
+#include "nvt-na51055-fastboot-front-iq.dtsi"
+#include "nvt-na51055-fastboot-front-iq_hdr.dtsi"
+#include "nvt-na51055-fastboot-front-iq_ir.dtsi"

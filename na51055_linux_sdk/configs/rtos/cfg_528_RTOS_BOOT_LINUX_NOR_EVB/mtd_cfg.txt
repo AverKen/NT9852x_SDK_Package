@@ -1,0 +1,1 @@
+../../Linux/cfg_RTOS_BOOT_LINUX_NOR_EVB/mtd_cfg.txt

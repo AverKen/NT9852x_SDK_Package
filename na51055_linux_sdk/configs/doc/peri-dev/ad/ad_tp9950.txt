@@ -1,0 +1,39 @@
+&i2c2 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	
+	ad_tp9950@0 {
+		compatible = "nvt,ad_tp9950.0";
+		reg = <0x44>;								// 7-bit slave register
+		power_cfg {
+			mclk_sel = "MCLK3";						// ex : "MCLK" or "MCLK2" or "MCLK3"
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////
+			// io control description                                                                        //
+			// io_ctl0@0~19(max) = <io_pin 	 level   hold time>                                              //
+			//   io_pin - (3 types)                                                                          //
+			//     1. pin name (ex. S_GPIO(4), PGPIO(0), ...)                                                //
+			//     2. 0xfffe: the following commands will only applied on 'power on' sequence (default)      //
+			//     3. 0xfffd: the following commands will only applied on 'power off' sequence               //
+			//   level - 1: pull high, 0: pull low                                                           //
+			//   hold time - delay time (us)                                                                 //
+			///////////////////////////////////////////////////////////////////////////////////////////////////
+			//// power on ////
+			io_ctl0 = <0xfffe		0 0>;			// power on
+			io_ctl1 = <S_GPIO(12)	1 10>;			// power
+			io_ctl2 = <S_GPIO(5)	1 10>;			// power
+			io_ctl3 = <D_GPIO(8)	1 10>;			// power
+
+			//// power off ////
+			io_ctl4 = <0xfffd		0 0>;			// power off
+			io_ctl5 = <D_GPIO(8)	0 10>;			// power
+			io_ctl6 = <S_GPIO(5)	0 10>;			// power
+			io_ctl7 = <S_GPIO(12)	0 10>;			// power
+		};
+
+		outport@0 {
+			inport = <0>;
+			signal = <0>;							// 0: parallel, 1:mipi
+		};
+	};
+};

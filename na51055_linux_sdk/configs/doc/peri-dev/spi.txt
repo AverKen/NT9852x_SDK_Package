@@ -1,0 +1,9 @@
+Novatek IVOT Platforms Device Tree Bindings
+-------------------------------------------------
+* dummy_spi_dev
+Properties:
+- compatible : Shall be "dummy_spi_dev.0", do not modify.
+- reg : SPI chip select number
+- spi-max-frequency : the spi working frequency
+- spi-cpol : The clock polarity config.
+

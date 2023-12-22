@@ -1,0 +1,14 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+/ {
+	i2c0: i2c@f0220000 {  compatible = "nvt,nvt_i2c"; reg = <0xf0220000 0x100>; interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>; clock-frequency = <400000>; id = <0>; /* gsr = <2>; */ /* tsr = <1>; */};
+	i2c1: i2c2@f0350000 { compatible = "nvt,nvt_i2c"; reg = <0xf0350000 0x100>; interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>; clock-frequency = <400000>; id = <1>; /* gsr = <2>; */ /* tsr = <1>; */};
+	i2c2: i2c3@f03a0000 { compatible = "nvt,nvt_i2c"; reg = <0xf03a0000 0x100>; interrupts = <GIC_SPI 60 IRQ_TYPE_LEVEL_HIGH>; clock-frequency = <400000>; id = <2>; /* gsr = <2>; */ /* tsr = <1>; */};
+	i2c3: i2c4@f03b0000 { compatible = "nvt,nvt_i2c"; reg = <0xf03b0000 0x100>; interrupts = <GIC_SPI 68 IRQ_TYPE_LEVEL_HIGH>; clock-frequency = <400000>; id = <3>; /* gsr = <2>; */ /* tsr = <1>; */};
+	i2c4: i2c5@f03c0000 { compatible = "nvt,nvt_i2c"; reg = <0xf03c0000 0x100>; interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>; clock-frequency = <400000>; id = <4>; /* gsr = <2>; */ /* tsr = <1>; */};
+};

@@ -1,0 +1,4 @@
+*.mk
+*.dtb
+*.tmp.dts
+cfg_gen

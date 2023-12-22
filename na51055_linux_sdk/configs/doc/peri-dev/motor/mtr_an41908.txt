@@ -1,0 +1,87 @@
+&spi1 {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+	mtr_an41908@0 {
+		compatible = "nvt,mtr_an41908";
+		reg = <0>;                           /* chip select 0 */
+		spi-max-frequency = <4000000>;
+		spi-cpol = <1>;
+		spi-cpha = <1>;
+		spi-cs-high = <1>;
+		spi-lsb-first = <1>;
+		spi_cfg {
+			type = <0>;                  /* 0:SPI / 1:I2C / 2:GPIO */
+			chnel = <1>;                 /* spi0 ~ spi3 */
+			mode = <3>;                  /* 0 ~ 3 */
+			packet_bit = <24>;           /* 8 / 16 / 24 / 32 */
+			braud_rate = <4000000>;      /* unit: Hz */
+			data_order = <1>;            /* 0:MSB / 1:LSB */
+			cs_polarity = <1>;           /* 0:active low / 1:active high */
+			packet_dly = <0>;
+		};
+		i2c_cfg {
+			id = <0>;                    /* I2C_ID_1 */
+			addr = <0x18>;
+		};
+		spi_gpio_cfg {
+			cs = <P_GPIO(12)>;
+			clk = <P_GPIO(13)>;
+			tx = <P_GPIO(14)>;
+			rx = <P_GPIO(15)>;
+		};
+		pwm_cfg {
+			pwm_mode = <1>;              /* 0:pwm / 1:micro-step / 0x0F:null */
+			focus_freq = <1400>;
+			zoom_freq = <1000>;
+			focus_port_sel = <2>;        /* PWM0 ~ PWM11 */
+			zoom_port_sel = <3>;         /* PWM0 ~ PWM11 */
+		};
+		gpio_cfg {
+			rst_pin = <P_GPIO(4)>;
+			pwdn_pin = <0>;
+			fz_vd_pin = <P_GPIO(5)>;
+			is_vd_pin = <0>;
+			focus_sts_pin = <0>;
+			zoom_sts_pin = <0>;
+			ircut_0_pin = <0>;
+			ircut_1_pin = <0>;
+			ext_0_pin = <0>;
+			ext_1_pin = <0>;
+			ext_2_pin = <0>;
+			ext_3_pin = <0>;
+		};
+		lens_param {
+			wide_focal = <2800>;         /* unit: um */
+			tele_focal = <12000>;
+			focus_pos_dir = <1>;         /* 0 or 1 */
+			zoom_pos_dir = <1>;
+			focus_init_ofst = <25>;
+			zoom_init_ofst = <10>;
+			focus_dis_max = <1520>;
+			zoom_dis_max = <600>;
+			focus_move_spd = <80>;       /* 20 ~ 100 */
+			zoom_move_spd = <60>;
+			focus_backlash = <13>;
+			zoom_backlash = <13>;
+			focus_dly_time = <31>;       /* unit: msec */
+			zoom_dly_time = <62>;
+			fz_tab0 = <0 0 260>;
+			fz_tab1 = <16 6 326>;
+			fz_tab2 = <50 233 553>;
+			fz_tab3 = <100 460 780>;
+			fz_tab4 = <160 640 960>;
+			fz_tab5 = <220 820 1140>;
+			fz_tab6 = <290 1000 1320>;
+			fz_tab7 = <360 1050 1370>;
+			fz_tab8 = <440 1100 1420>;
+			fz_tab9 = <520 1150 1470>;
+			fz_tab10 = <600 1200 1520>;
+			fz_tab11 = <0 0 0>;
+			fz_tab12 = <0 0 0>;
+			fz_tab13 = <0 0 0>;
+			fz_tab14 = <0 0 0>;
+			fz_tab15 = <0 0 0>;
+		};
+	};
+};

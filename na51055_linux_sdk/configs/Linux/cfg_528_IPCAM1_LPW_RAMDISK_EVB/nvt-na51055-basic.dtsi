@@ -1,0 +1,97 @@
+/*
+ * Novatek Ltd. NA51055 BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+
+/ {
+	model = "Novatek NA51055";
+	compatible = "novatek,na51055", "nvt,ca9";
+	interrupt-parent = <&gic>;
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	cpus {
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		cpu0: cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a9";
+			reg = <0x0>;
+			next-level-cache = <&L2>;
+			clock-frequency = <480000000>;
+			apb-frequency = <120000000>;
+		};
+		cpu1: cpu@1 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a9";
+			reg = <0x1>;
+			cpu-release-addr = <0xF07F8000>;
+			next-level-cache = <&L2>;
+			clock-frequency = <480000000>;
+			apb-frequency = <120000000>;
+		};
+	};
+
+	cg@f0020000 {
+		compatible = "nvt,core_clk";
+		reg = <0xf0020000 0x1000>;
+	};
+
+	/* binding to clk framework driver */
+	periph_clk: periph_clk {
+		compatible = "nvt,periph_clk";
+		#clock-cells = <0>;
+		clock-output-names = "periph_clk";
+	};
+
+	global_timer@ffd00200 {
+		compatible = "arm,cortex-a9-global-timer";
+		reg = <0xffd00200 0x20>;
+		interrupts = <GIC_PPI 11 0xf01>;
+		clocks = <&periph_clk>;
+	};
+
+	private_timer@ffd00600 {
+		compatible = "arm,cortex-a9-twd-timer";
+		reg = <0xffd00600 0x20>;
+		interrupts = <GIC_PPI 13 0xf01>;
+		clocks = <&periph_clk>;
+	};
+
+	pmu {
+		compatible = "arm,cortex-a9-pmu";
+		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_HIGH>,
+				<GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>;
+		interrupt-affinity = <&cpu0>, <&cpu1>;
+	};
+
+	L2: cache-controller@ffe00000 {
+		compatible = "arm,pl310-cache";
+		reg = <0xffe00000 0x1000>;
+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+		cache-unified;
+		arm,shared-override;
+		cache-level = <2>;
+		arm,data-latency = <2 2 2>;
+		arm,tag-latency = <2 2 2>;
+	};
+
+	gic: interrupt-controller@0xffd00000 {
+		compatible = "arm,cortex-a9-gic";
+		#interrupt-cells = <3>;
+		interrupt-controller;
+		reg =	<0xffd01000 0x1000>,	/* GIC Dist */
+			<0xffd00100 0x1000>;	/* GIC CPU */
+	};
+
+	scu: snoop-control-unit@0xffd00000 {
+		compatible = "arm,cortex-a9-scu";
+		reg = <0xffd00000 0x100>;
+	};
+};

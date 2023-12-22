@@ -1,0 +1,33 @@
+&fastboot {
+	hdal-mem {
+		comn_blk_0 = <0x12802000 0x2fc800>;
+		comn_blk_1 = <0x12aff000 0x2fc800>;
+		comn_blk_2 = <0x12dfc000 0x2fc800>;
+		comn_blk_3 = <0x130f9000 0x2fc800>;
+		comn_blk_4 = <0x133f7000 0x2f7800>;
+		comn_blk_5 = <0x136ef000 0x2f7800>;
+		comn_blk_6 = <0x139e7000 0x2f7800>;
+		comn_blk_7 = <0x13cdf000 0x2f7800>;
+		comn_blk_8 = <0x13fd7000 0x2f7800>;
+		comn_blk_9 = <0x142cf000 0x2f7800>;
+		comn_blk_10 = <0x145c8000 0x2f7800>;
+		comn_blk_11 = <0x148c0000 0x2f7800>;
+		comn_blk_12 = <0x14bb8000 0x2f7800>;
+		comn_blk_13 = <0x14eb0000 0x2f7800>;
+		comn_blk_14 = <0x151a8000 0x2f7800>;
+		comn_blk_15 = <0x154a0000 0x2f7800>;
+		comn_blk_16 = <0x15799000 0x2f7800>;
+		comn_blk_17 = <0x15a91000 0x2f7800>;
+		comn_blk_18 = <0x15d89000 0x2f7800>;
+		comn_blk_cnt = <19>;
+		vprc_ctrl_0 = <0x16082000 0x10f600>;
+		venc_max_0 = <0x16193000 0xac7db0>;
+		acap_ctrl_0 = <0x16c5c000 0x36580>;
+		venc_max_1 = <0x16c94000 0xa67db0>;
+		venc_max_2 = <0x176fd000 0x1e18f8>;
+		venc_max_3 = <0x178e0000 0xa67db0>;
+		venc_max_4 = <0x18349000 0xa67db0>;
+		venc_max_5 = <0x18db2000 0x1e18f8>;
+		vprc_ctrl_1 = <0x18f95000 0x10f600>;
+	};
+};

@@ -1,0 +1,10 @@
+Novatek IVOT Platforms Device Tree Bindings
+-------------------------------------------------
+
+* I2C
+Properties:
+- compatible : Shall be "nvt,nvt_i2c".
+- reg : Engine Base address. Shall not modify
+- interrupts : IRQ number. Shall not modify
+- clock-frequency : Default is 100KHz <100000>. The user can change this 100000 ~ 400000.
+

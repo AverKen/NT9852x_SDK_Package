@@ -1,0 +1,1 @@
+../cfg_528_RTOS_BOOT_LINUX_EVB/make_post.sh

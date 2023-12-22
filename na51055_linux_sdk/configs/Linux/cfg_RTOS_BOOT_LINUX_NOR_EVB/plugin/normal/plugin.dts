@@ -1,0 +1,15 @@
+/*
+ * Novatek Ltd. BSP part of dts
+ *
+ * Cortex-A9
+ *
+ */
+ 
+/dts-v1/;
+
+/ {
+	fastboot:fastboot {
+	};
+};
+
+#include "nvt-na51055-fastboot-iq-imx290.dtsi"

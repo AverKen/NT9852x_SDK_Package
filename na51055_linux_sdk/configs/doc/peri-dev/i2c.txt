@@ -1,0 +1,10 @@
+Novatek IVOT Platforms Device Tree Bindings
+-------------------------------------------------
+* dummy_i2c_dev
+dummy device for you reference.
+
+Properties:
+- compatible : Shall be "nvt,dummy_i2c_dev", do not modify.
+- reg : I2c slave address: 0x1a
+
+
